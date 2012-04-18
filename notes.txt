@@ -1,0 +1,26 @@
+Title: "An Open Source Data Storage and Visualization Backend for
+Experimental Data"
+
+Main points and the angle:
+
+1. Flexible data backend:
+ a. Can store many kinds of data from very different setups
+ b. Independent of data source (direct access of via files)
+ c. Centralisation of data, makes for easy backup
+ d. Posting of data as it is gathered
+
+2. Running data logging for monitoring and history
+ a. History in case of "lagging" log entries
+ b. Possibilities of alarms
+
+3. Presentation
+ a. Easy access to data
+ b. Easy sharing of data with colleagues
+ c. Mobil backend
+
+Figures: Screenshots
+
+Code examples:
+ 1. Configuration
+ 2. X-axis conversion
+ 3. Variable interval selection
