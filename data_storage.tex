@@ -8,5 +8,19 @@ easily managed by the professional IT-staff of the derpartement. It is
 important to realized that even though it typically is not a problem if a
 single client machine somewhare in the system is temporarily down (this can
 happen for many reasons in a experimental lab), it is crucial that this
-particular server is handled by professionally.
+particular server is handled like a real production server.
+
+To keep the server-side of things simple, we use a relational database, in our
+case MySQL\cite{mysql} which is open source and provides extremely good
+performance. This MySQL server contains the entire set of data of all
+experimental setups, thus it is extremely easy to backup everything by simply
+doing a dump of the database with regular intervals.
+
+Since the database is only exposed to the local network, security is not a
+really a concern, however to protect agains accidential pollution of the
+various setups with irrelevant data when code is exchanged between setups, each
+client has its own username and password which is not part of the code
+(typically it will be managed in ODBC-settings) In this way, code can flow back
+and forth between setup without the risk of one setup accidentially loggin data
+to other setups tables.
 
