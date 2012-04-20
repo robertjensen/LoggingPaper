@@ -1,7 +1,7 @@
 Title: "An Open Source Data Storage and Visualization Backend for
 Experimental Data"
 
-Main points and the angle:
+== Main points and the angle:
 
 1. Flexible data backend:
  a. Can store many kinds of data from very different setups
@@ -18,9 +18,16 @@ Main points and the angle:
  b. Easy sharing of data with colleagues
  c. Mobil backend
 
-Figures: Screenshots
+4. Automation
+Since the theme of the journal is "automation", we should probably
+make an effort to highlight how the logging helps in surveillance of
+important automation tasks. Two possible cases to highlight is
+ a. Large time span experiments on the micro reactors
+ b. Large time span cleaning procedures on single crystals
 
-Code examples:
+== Figures: Screenshots
+
+== Code examples:
  1. Configuration
  2. X-axis conversion
  3. Variable interval selection
