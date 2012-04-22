@@ -1,1 +1,44 @@
-Description of two cases in which the data logging system is used.
+The existence of this data system is paramount to several automation tasks
+in our lab. Below a few examples of the use of the data system for
+these purposes are described.
+
+\subsection{Sample cleaning}
+In the field of catalysis, one direction of research concerns gas
+reactivity studies on the surface of single crystal samples under
+Ultra High Vacuum (UHV)\fixme{Probably has been introduced before}
+conditions ($\sim10^{-13}$\,mbar).
+
+Before experiments can be performed, the sample must be properly
+cleaned to ensure that no contaminants are present on the surface. The
+cleaning of the surface is achieved by running a number of cleaning
+cycles. Each of these cycles can take up to several hours.% and may
+%include sputtering (bombardment of the surface with Ar$^+$ ions to
+%peel or a part of the surface), gas exposure and heating.
+Before this task was automatized, it typically required simple manual
+intervention 2-4 times during a 30 to 120 minute cycle. Obviously, this
+was a suboptimal solution, since a lot of time was spent, with only
+small time intervals to work on other things, before the next manual
+intervention.
+
+As it is apparent the atomization of this task lead to significant
+time savings, since it allowed these cleaning cycles to e.g.\ be run in
+the evening or at night. However, during the atomization process one
+concerns that had to be addressed was how to monitor the status of the
+cleaning and the equipment. This was easily accomplished by means of
+the data logging system, where all relevant parameters can be
+continuously logged and viewed with any of the data viewing options
+mentioned in section \fixme{insert ref}. Obviously the cleaning
+program it self is responsible for the safety of the system and for
+shutting it down if it goes out of boundaries. But with the continuous
+logging it is a simple task to add surveillance to the task that
+alerts the user if it happens, in case it can be safely restarted
+remotely.
+
+\subsection{Experimentation over extended time periods}
+
+Mini-reactor example. Bla bla more exhaustive search of parameter
+space for experiments with large time spans. \fixme{Finish section}
+
+\subsection{Cooling water alarms}
+Possibly add section about the cooling water alarms. \fixme{Complete
+  or remove this section}
