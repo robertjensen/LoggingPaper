@@ -1,0 +1,107 @@
+This file contains the raw code examples that may be used in the article:
+
+=== CONFIGURATION ===
+
+For configuration we could think about either showing the configuration for a graph for continously logging or for a "spectrum". I think it may make more sense to show the continous logging one, but I have included an exaple of each:
+
+<!-- PRESSURE -->
+<graph type='pressure'>
+  <query>SELECT unix_timestamp(time), pressure FROM pressure_SETUP where time between "\
+  {from}" and "{to}" order by time</query>
+  <ylabel>Pressure / torr</ylabel>
+  <title>Pressure in SETUP</title>
+  <default_yscale>log</default_yscale>
+  <default_xscale>dat</default_xscale>
+</graph>
+
+With this example we show the idea of writing queries directly into the configuration, but also with some parameters to be replaced later e.g: "from" and "to" and we show the option to defince default axes types.
+
+<!-- ISS -->
+<graph type='iss'>
+  <query>SELECT x,y  FROM xy_values_SETUP where measurement = {id} order by \
+  id</query>
+  <type>3</type>
+  <xlabel>Energy / eV</xlabel>
+  <ylabel>Counts / s</ylabel>
+  <title>ISS data</title>
+  <default_xscale>lin</default_xscale>
+  <default_yscale>lin</default_yscale>
+</graph>
+
+This would be a pretty basic example of the configuration for a measurement. We could consider bringing in one that shows the configuration in the case where we transform the axis, but they quickly become large so I don't think it warrents the extra lines.
+
+=== VARIABLE RESOLUTION LOGGING ===
+I've trimmed down the python algorithm from main.py (now 10 lines) and moved the logging settings to the beginning. I think it makes for a nice code example:
+
+max_time_between_points = 600; deviation = 0.1
+now = time.time(); current_measurement = get_measurement()
+time_trigged = (now - last_recorded_time) > max_time_between_points
+value_trigged = not (last_recorded_value * (1-deviation)
+                     < current_measurement <
+                     last_recorded_value * (1+deviation))
+if time_trigged or value_trigged:
+    last_recorded_value = current_measurement
+    last_recorded_time = now
+    send_measurement_to_db(now, current_measurement)
+
+
+=== AXIS TRANSFORMATION ===
+
+I'm not sure that this actually makes for the best of code examples, because the actualy actual transformation is just one command and the whole thing, with finding the correct temperature data and shaving off the data to avoid extrapolation errors is way to big. One ould consider dexcribing it in pseudo code. I have done a few different examples below:
+
+= pseudo code =
+The measurements a and b are in the same group and are both logged as function of time, but not on the same points in time. The algorith to transform it so that we can present a as a function of b is then
+ * Get the b data that is in the same group as a as function of time
+ * Form a function that interpolates values for b as function of time in between its data points (scipy.interpolate interp1d)
+ * Use this function to the get the values of b that corresponds to points in time for a
+ * Plot a as function of these value
+
+= The full algorithm =
+
+The full algorithm is listed below. If you think it is a good idea we
+can cut it any way you like, but as a I said I don't think it makes
+much sense. I think the pseudo code option is better in this case.
+
+# Get the datetime of the measurement                                   
+query = ('SELECT time FROM {0} where id = {1}'
+         ''.format(self.gs['measurements_table'], idl))
+# datetime object                                                       
+datetime = self._result_from_query(query)[0][0]
+
+# Fetch all sets of id and label that is from the same time             
+query = ('SELECT id, mass_label FROM {0} WHERE TIME = \"{1}\"'
+         ''.format(self.gs['measurements_table'],
+                   datetime.strftime("%Y-%m-%d %H:%M:%S")))
+measurements = self._result_from_query(query)
+
+# Find the one that has a label that contains "temperature"             
+temperature_id=None
+for measurement in measurements:
+    if measurement[1].lower().count('temperature') > 0:
+        temperature_id = measurement[0]
+
+# If there is a temperature (that is not None)                          
+if temperature_id:
+    # Fetch the pertaining temperature data                             
+    query = self.gs['t_query'].format(t_id=temperature_id)
+    temperature_data = array(self._result_from_query(query))
+    """ Assumes both self.data (mass) and temperature_data              
+    (temperature) contains a common x-axis (typical time) and           
+    transforms the y-axis temperature_data into the x-axis of the       
+    self.data                                                           
+    """
+    x_axis = interp1d(temperature_data[:,0],temperature_data[:,1])
+
+    # Cut of the ends of self.data where we have no interpolation data  
+    start=0; end=self.data.shape[0]
+    ttmin = temperature_data[:,0].min()
+    ttmax = temperature_data[:,0].max()
+    uncut = (start, end)
+    while self.data[start,0] < ttmin:
+        start += 1
+    while self.data[end-1,0] > ttmax:
+        end -= 1
+    if (start, end) != uncut:
+        self.data = self.data[start:end,:]
+    # Transform the axis                                                
+    self.data[:,0] = x_axis(self.data[:,0])
