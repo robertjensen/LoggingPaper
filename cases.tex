@@ -20,25 +20,41 @@ was a suboptimal solution, since a lot of time was spent, with only
 small time intervals to work on other things, before the next manual
 intervention.
 
-As it is apparent the atomization of this task lead to significant
-time savings, since it allowed these cleaning cycles to e.g.\ be run in
-the evening or at night. However, during the atomization process one
-concerns that had to be addressed was how to monitor the status of the
-cleaning and the equipment. This was easily accomplished by means of
-the data logging system, where all relevant parameters can be
+As it is apparent that the atomization of this task lead to
+significant time savings, since it allowed these cleaning cycles to
+e.g.\ be run in the evening or at night. However, during the
+atomization process one concerns that had to be addressed was how to
+monitor the status of the cleaning and the equipment. With the data
+logging system in place, all relevant parameters could easily be
 continuously logged and viewed with any of the data viewing options
-mentioned in section \fixme{insert ref}. Obviously the cleaning
-program it self is responsible for the safety of the system and for
+mentioned in section ???\fixme{insert ref}. Obviously the cleaning
+program itself is responsible for the safety of the system and for
 shutting it down if it goes out of boundaries. But with the continuous
-logging it is a simple task to add surveillance to the task that
-alerts the user if it happens, in case it can be safely restarted
-remotely.
+logging it is a simple task to add surveillance to the cleaning that
+alerts the user if it happens, which means that it can be safely
+restarted if it is safe to do so. There is a specific case describing
+a alarm in section \ref{sec:cooling_water_alarms}.
 
 \subsection{Experimentation over extended time periods}
 
 Mini-reactor example. Bla bla more exhaustive search of parameter
 space for experiments with large time spans. \fixme{Finish section}
 
-\subsection{Cooling water alarms}
-Possibly add section about the cooling water alarms. \fixme{Complete
-  or remove this section}
+\subsection{Cooling water alarms}\label{sec:cooling_water_alarms}
+Several important pieces of equipment require cooling. If they loose
+the cooling it will often result in equipment break down, which,
+depending on the equipment, can be expensive both in repair cost and
+work time lost.
+
+In our lab the main components with critical cooling requirements are
+the turbo molecular pumps that are used to maintain vacuum. We do not
+have direct access to monitor the cooling water status. Therefore,
+instead we mounted temperature measurements on all the pumps and log
+all of the these via the data system. Then, on the server that runs
+the data presentation website we added a script that fetches the
+latest temperatures from the database, and if these start to climb,
+sends out an alarm via email. While it was inconvenient that we were
+unable to monitor the cooling water directly, this approach has the
+very desirable side effect that we can now also monitor the health (to
+the extent it is given by the temperature) of each pump
+individually.\fixme{Decide if we want to mention this here or at all}
