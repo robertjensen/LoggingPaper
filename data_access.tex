@@ -1,33 +1,33 @@
-As mentioned in section~\ref{data_storage} it is both possible and indeed very
-easy to access data directly from the database using either direct SQL-
-statements or programming that will give access to the database. However, even
-though this can be a good strategy for final publishable data-analysis, in
-practice often one simply needs a quick look at data to see if everything
-perform as expected. For this kind of data analysis, it would be highly
-impractical to write small custom pieces of software each time. For this reason
-we have developed a framework for visualization of the stored data that allows
-quick and easy access to all data. The framework includes support for basic
-data treatment as well as the option to option to plot several data sets at the
-same time for easy comparison of results.
+As mentioned in section~\ref{data_storage} it is both possible and very easy to
+access data directly from the database using either direct SQL statements or
+programming that will give access to the database. However, even though this
+can be a good strategy for final publishable data analysis, in practice often
+one simply needs a quick look at data to see if everything performs as expected.
+For this kind of data analysis it would be highly impractical to write small
+custom pieces of software for each user. For this reason we have developed a
+framework for visualization of the stored data that allows quick and easy
+access to all data. The framework includes support for basic data treatment as
+well as the option to option to plot several data sets at the same time for
+easy comparison of results.
 
-From the beginning, the goal for the visualization module has not been to
-provide plots that have publication quality, since this is nearly impossible to
-do in a rather simple plotting backing. Instead we aim for what we call
-``supervisor-quality`` which means that the plots should be good enough that
-they can be used for all kinds of everyday use, including presentations at
-group meetings, etc. To achieve this we use frontend/backend type of topology
-with the code used to handle user input being handled in HTML and PHP and thus
-allows are user input to be performed from a web-browser. The backend consists
-mainly of an open source plotting library and some interface code to feed data
-into the plotting code and to setup preferences specific to each experimental
-setup. The backend is mainly written in Python\cite{python} and the
-configuration as done as an XML-file for each setup. The system is flexible
-towards to choice of plotting library which is a great advantage since
-different plotting libraries might be optimal for different tasks. At the
-moment all plotting is performed by matplotlib\cite{matplotlib}. As a testimony
-of the flexibility of the setup, we have moved to matplotlib from our original
-backend, JpGraph\cite{jpgraph}, without significant changes to the backend
-code. Currently, we are even investigating moving some of the display code to
-the JacaScript based dygraphs\cite{dygraphs}, since this backend allows for
-real-time manipulation of the data using a mouse, even though the graph is
-still presented through an ordinary webbrowser.
+From the beginning the goal for the visualization module has not been to
+provide plots that have publication quality since this is nearly impossible in
+a simple plotting backing. Instead we aim for a quality where the plots are
+good enough to be used for all kinds of everyday use including presentations at
+group meetings, as starting point for discussion of data etc. To achieve this
+we use a frontend/backend type of topology where the code used to handle user
+input is retrieved in HTML and PHP thus allowing user input to be acquired from
+a web browser. The backend consists of an open source plotting library,
+interface code to feed data into the plotting code and setup preferences
+specific to each experimental setup. The backend is mainly written in
+Python\cite{python} and the configuration read from a XML file unique to each
+setup. The system is flexible towards choice of plotting library which is a
+great advantage since different plotting libraries might be optimal for
+different tasks. At the moment all plotting is performed by
+matplotlib\cite{matplotlib}. As a testimony of the flexibility of the setup, we
+have moved to matplotlib from our original backend, JpGraph\cite{jpgraph},
+without significant changes to the backend code. Currently, we are even
+investigating moving some of the display code to the JavaScript based
+dygraphs\cite{dygraphs}, since this plotting library allows for real-time
+manipulation of the data using a mouse even though the graph is still
+presented through an ordinary web browser.

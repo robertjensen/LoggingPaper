@@ -1,39 +1,41 @@
-In a fairly large research department, it is obvious than any kind of data
-acquisition must necessarily be strictly decentralized with several independent
-clients running on many kinds of computer hardware, collecting many kind of
-different data from many kinds of instrumentation.
+In large research departments any kind of data acquisition must necessarily be
+strictly decentralized with several independent clients to avoid dataloss and
+simplify backup of important data. This requires interfacing of many types of
+computer hardware and collecting different types of data from many kinds of
+instrumentation.
 
 In practice this is achieved by formulating a set of general design goals that
-will serve as a kind of language and hardware independent pseudo-code which
+will serve as computer language and hardware independent pseudo-code which
 will help the process of designing a new acquisition client. The design goals
 of our implementation looks as follows:
 
 * To minimize the risk of data loss and to provide easy data-access across the
-  lab, all clients must store data for as short as possible before handing of
-  the data to a central server, preferably the data should go to the server as
-  soon as it is recorded. For data being recorded over longer time-spans this
-  means that data must be live-streamed to the server.
+  laboratory all clients must store data for as short amount of time as
+  possible before handing of the data to a central server. Preferably the data
+  should be stored on the server as soon as it is acquired. For data being
+  recorded over longer time-spans this means that data must be live-streamed to
+  the server.
 
 * To avoid data-loss in the event of missing network or maintenance of the
-  central server, all clients collecting critical data must implement a local
+  central server all clients collecting critical data must implement a local
   queue that will temporarily hold data until the central server can again be
   accessed. The client must continuously check if the server is again available
   and as soon as possible deliver queued data to the server.
 
-* For continuous measurements (eg. temperature of pumps, pressure in vacuum
-  chambers, etc.), data logging must be implemented in a way that ensures both
-  that all significant events are recorded and at the same time does not use
+* For continuous measurements (e.g. temperature of pumps, pressure in vacuum
+  chambers, etc.) data logging must be implemented in a way that ensures that
+  all significant events are recorded and at the same time does not use
   excessive amounts of storage. This is typically implemented by sampling data
   in a much higher rate than they are recorded. The local client will then
-  based on relevant heuristics decide whether a new data-point should be
-  recorded. This is typically implemented by waiting for either a given
+  based on relevant heuristics decide whether a new data point should stored on
+  the server. This is typically implemented by waiting for either a given
   relative change in the signal or a maximum time since last recording of a
   data point.
   
-* For stand-alone measurements (eg. spectrometry, electrical characterization,
-  etc.) it is important to measure appropriate amounts of meta-data ensuring
+* For stand-alone measurements (e.g. spectrometry, electrical characterization,
+  etc.) it is important to measure appropriate amounts of metadata ensuring
   that all information about the experiment is preserved. This along with
-  accurate time-information will ensure that questions that where not yet
-  formulated at the time of the experiment can answered in retrospect using the
-  meta-data along with the continuously measured properties.
+  accurate time information will ensure that questions that where not yet
+  formulated at the time of the experiment can be answered in retrospect using
+  the metadata along with the continuously measured parameters.
   
