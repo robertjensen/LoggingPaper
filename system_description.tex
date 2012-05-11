@@ -1,11 +1,10 @@
 The system consists of three logically separate components as illustrated in
 Figure~\ref{fig:system_overview}; 1) the equipment component where all
-communication with apparatus and acquisition of data is performed 2) the servers
-which consists of the MySQL server that stores the acquired data from
-experiments by the apparatus used and the webserver which interacts and
-presents the user with data retrieved from the database and 3) the user
-component which is made up of the clints whishing to access the data.
-\begin{figure}
+communication with apparatus and acquisition of data is performed 2) the
+servers which consist of the MySQL server that stores the acquired data from
+experiments and the webserver which interacts and presents the user with data
+retrieved from the database and 3) the user component which is made up of the
+clints whishing to access the data. \begin{figure}
  \begin{center}
  \includegraphics[width=10cm]{system_overview.png}
  \caption{
@@ -17,13 +16,22 @@ component which is made up of the clints whishing to access the data.
 
 The system is highly modular meaning the servers can accept data from a range
 of different sources. In the current setup equipment interfaced with RS232,
-GPIB, USB, analog/digital data acquisition cards standards written in both
-Labview and Python runs on the server. How the integration with the server and
-subsequent storage of data in the database is performed is hence a user
-determined design decision. This has a number of attractive advantages. The
-user(s) can integrate existing software with the databases quickly and without
-the need to rewrite any previous interface software written for experimental
-setups. Backup of experimental data on the local client is, from a user's point
+GPIB, USB, analog/digital data acquisition cards standards are logged to the
+MySQL database. The user can furthermore use programs written in a wide variety
+of languages. As a testimony to this software written in both LabView and
+Python are used to save data to the database. How the integration with the
+server and subsequent storage of data in the database is performed is hence a
+user determined design decision. This has a number of attractive advantages.
+The user(s) can integrate existing software with the databases quickly and
+without the need to rewrite any previous interface software written for
+experimental setups. Furthermore, due to the flexibility of system, if online
+storage in the database during acquisition is not possible due to software
+limitations the data can still be saved in the database by subsequent offline
+parsing of the data files. This, however, still requires that the file format,
+which holds the data, is specified or the data can be exported to a flat text
+format from the acquisition software. As an additional advantage of a
+centralized database containing all experimental data backup is simplified.
+Backup of experimental data on the local client is hence, from a user's point
 of view, transparent as this can be performed by routine jobs on the server.
 
 The servers consist of a MySQL server and a webserver. All experimental data is
@@ -38,9 +46,9 @@ To accommodate a range of users and provide the largest flexibility the
 webserver displays both a standard HTML/CSS site for desktop PCs and a mobile
 version suitable for tablet/smartphone users.
 
-Access for users is provided in two different ways. Either the user can use a
-computer or a handheld device to access the data. The webinterface, with which
-the user interacts, is also capable of routine data treatment. This can either
-be range change of displayed data, plotting on a log scale, performing a
-running average, etc. In this way the user can easily and quickly get an
-overview of acquired data.
+Access for users is provided in primarily two different ways. Either the user
+can use a computer or a handheld device to access the data. The webinterface,
+with which the user interacts, is also capable of routine data treatment. This
+can either be range change of displayed data, plotting on a log scale,
+performing a running average, etc. In this way the user can easily and quickly
+get an overview of acquired data.

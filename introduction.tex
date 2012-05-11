@@ -1,43 +1,43 @@
 In every experimental laboratory the need for acquisition and subsequent
-logging of data is of essential importance. Typically, logbooks, either in
-electronic or paper form, is used to organize large amounts of data and note
-down experimental parameters. The acquired data from a given experiment is
-typically stored locally on the laboratory computer. The data is often acquired
-in highly specialized proprietary software in proprietary formats. When working
-with different experimental systems across several computers with different
-software suites, operating systems etc. the exchange of acquired data is
-cumbersome and difficult due to the nature of proprietary formats.
+logging of data is of essential importance. The acquired data from a given
+experiment is typically stored locally on the laboratory computer. The data is
+often acquired in highly specialized proprietary software in closed proprietary
+formats integrated with the hardware by the manufacturer. When working with
+different experimental systems across several computers with different software
+suites, operating systems etc. the exchange of acquired data is cumbersome and
+difficult due to the nature of proprietary formats.
 
-To avoid difficult data exchange and to further easy data processing and
-integration with contingent equipment an open source software platform is
+To avoid difficult data exchange, simplify data processing and integrate with
+experimental equipment an open source software platform is
 necessary\cite{Benn2009,Murray2011,So2007}. To accommodate these demands we
-have written the entire system in Python, PHP and HTML/CSS integrated with a
-MySQL server. Python was primarily chosen due to its tight integration with
-scientific packages which makes data analysis and treatment
-easier\cite{Cahn2007}. PHP and HTML/CSS is used to display the data to the user
-in standardized formats which is suitable for web browsers. This approach is
-very flexible and it used in other parts of the scientific
-community\cite{Crane2008}.
+have written an open source platform for saving, logging, treating and
+visualizing experimental data. The entire platform is written in Python, PHP
+and HTML/CSS which is integrated with a MySQL server where the acquired
+experimental data is stored. The Python language was primarily chosen due to
+its tight integration with scientific packages which makes data analysis and
+treatment more convenient\cite{Cahn2007}. PHP and HTML/CSS is used to display
+data in standardized formats suitable for web browsers and process user input
+the user. The combination of PHP and HTML/CSS to store data and process user
+input from webpages is very flexible and has proven successful in other parts
+of the scientific community\cite{Crane2008}.
 
-A solution to simplify and make data exchange easier across several platforms
-is to store all acquired experimental data on a centralized server running open
-source software. This has a number of attractive features.
-Firstly, by storing data on a centralized server backup of all experimental
-data enormously simplified. Secondly, the data is stored in a standardized and
-open format which allows easy export of the data to any platform or software
-source.
-
-The access to a centralized point of storage for experimental data also allows
-for real-time continuous logging of various parameters used as indicators for
-system health. Critical system parameters can hence be monitored and used to
-trigger alarms when these fall out of specified ranges. Furthermore, the
-logging of experimental setup parameters continuously enables access to these
-values at any previous point in time.
+For storage of acquired data a centralized server has been implemented. Storing
+all acquired experimental data in a database on a centralized server running
+source software has a number of attractive features. Firstly, by storing data
+on a centralized server, backup of all experimental data is enormously
+simplified. Secondly, the data is stored in a standardized and open formats
+which allows easy export of the data to any platform, open format or software
+source making data exchange across different platforms simpler. Thirdly, by
+open sourcing the code on the server collaboration between several different
+groups is possible hence increasing the number of developers to optimize the
+code and further increase functionality. 
 
 A centralized storage of data can be accomplished in many ways. However, in
 experimental laboratories where large amounts of data are recorded a database
-is an obvious choice for storage. Here we present a totally open source system
-consisting of data acquisition, storage in a MySQL database and a comprehensive
-display module including simple data treatment algorithms which is open source
-software.
+is an obvious choice for storage. As implementation we have chosen MySQL due to
+its GNU General Public License, simplicity, fast performance, flexibility and
+scalability.
 
+Here we present a totally open source system consisting of data acquisition,
+storage in a MySQL database and a comprehensive display module including simple
+data treatment algorithms licensed as open source software.
