@@ -18,7 +18,7 @@ The system is highly modular meaning the servers can accept data from a range
 of different sources. In the current setup equipment interfaced with RS232,
 GPIB, USB, analog/digital data acquisition cards standards are logged to the
 MySQL database. The user can furthermore use programs written in a wide variety
-of languages. As a testimony to this software written in both LabView and
+of languages. As a testimony to this, software written in both LabView and
 Python are used to save data to the database. How the integration with the
 server and subsequent storage of data in the database is performed is hence a
 user determined design decision. This has a number of attractive advantages.
@@ -35,20 +35,17 @@ Backup of experimental data on the local client is hence, from a user's point
 of view, transparent as this can be performed by routine jobs on the server.
 
 The servers consist of a MySQL server and a webserver. All experimental data is
-stored on the MySQL server while most of the data is presented to the user from
-the webserver. If needed, experimental data from the MySQL server can be
-directly retrieved for later analysis. Furthermore, by logging experimental
-data from clients continuously, alarm triggers can be used to warn users when
-logged parameters fall out of range. The webserver runs a backed of Python/PHP
-which is used to display the data to users via a website. Data is hence fetched
-from the MySQL server by the webserver and subsequently presented for the user.
-To accommodate a range of users and provide the largest flexibility the
-webserver displays both a standard HTML/CSS site for desktop PCs and a mobile
-version suitable for tablet/smartphone users.
+stored on the MySQL server and is presented to the user from the webserver. If
+needed, experimental data from the MySQL server can be retrieved directly for
+later analysis. The webserver runs a LAMP (Linux, Apache, MySQL,
+PHP/Python) backed which is used to display the data to users via
+a website. Data is hence fetched from the MySQL server by the webserver and
+subsequently presented for the user. To accommodate a range of users and
+provide the largest flexibility the webserver displays both a standard HTML/CSS
+site for desktop PCs and a mobile version suitable for tablet/smartphone users.
 
-Access for users is provided in primarily two different ways. Either the user
-can use a computer or a handheld device to access the data. The webinterface,
-with which the user interacts, is also capable of routine data treatment. This
-can either be range change of displayed data, plotting on a log scale,
-performing a running average, etc. In this way the user can easily and quickly
-get an overview of acquired data.
+The webinterface, which takes user input and displays data to the user, is
+also capable of routine data treatment. This can either be zoom of data,
+plotting on a log scale, performing a running average, etc. The plotting is
+easy extendable allowing the user to add any function necessary  In this way
+the user can easily and quickly get an overview of acquired data.
