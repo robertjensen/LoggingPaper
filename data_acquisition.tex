@@ -8,7 +8,7 @@ necessary.
 In practice this is achieved by formulating a set of general design goals that
 will serve as computer language and hardware independent pseudo-code which will
 help the process of designing a new acquisition client to obtain conformity of
-the system. The design goals of our implementation looks as follows:
+the system. The design goals of our implementation are:
 
 * To minimize data loss and to provide easy live data access in the laboratory
   from the server all clients must store data for as short amount of time as
@@ -32,10 +32,11 @@ the system. The design goals of our implementation looks as follows:
   the server. This is implemented by waiting for either a given relative change
   in the signal or a predefined time since last recording of a data point.
   
-* For stand-alone measurements (e.g. spectrometry, electrical characterization,
-  etc.) it is important to measure as much metadata as possible to ensure
-  that all information regarding the experiment is preserved. Along with
-  accurate time information will this ensure that questions that where not yet
-  formulated at the time of the experiment can be answered in retrospect using
-  the metadata along with the continuously measured data.
+* For stand-alone offline measurements (e.g. spectrometry, electrical
+  characterization, etc.) it is important to measure as much metadata as
+  possible to ensure that all information connected to the experiment is
+  preserved. Along with accurate time information will this ensure that
+  questions that where not yet formulated at the time of the experiment can be
+  answered in retrospect using the metadata along with the continuously
+  measured data.
   

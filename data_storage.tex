@@ -6,17 +6,18 @@ simplified compared to backup of individual computers. Backup of experimental
 data on the local client is hence, from a user's point of view, transparent as
 this can be performed by routine jobs on the server. Secondly, the data is
 stored in a standardized and open format which allows easy export of the data
-to any platform, open format or software source making data exchange across
-different platforms simpler. Thirdly, by open sourcing all of the code
-collaboration between several different groups is possible thus increasing the
-number of developers to optimize the code and further increase functionality.
+to any platform, other open formats or software source making data exchange
+across different platforms simpler. Thirdly, by open sourcing all of the code
+used to visualize and manipulate data from the database collaboration between
+several different groups is possible thus increasing the number of developers
+to optimize the code and further increase functionality.
 
 A centralized storage of data can be accomplished in many ways. However, in
 experimental laboratories where large amounts of data are recorded a database
-is an obvious choice for storage. To keep the server backed simple we are using
-a relational database. As specific implementation we have chosen MySQL due to
-its GNU General Public License, simplicity, fast performance, flexibility and
-scalability.
+is an obvious choice for storage. To keep the server backed simple we have
+implemented a relational database. As specific implementation we have chosen
+MySQL due to its GNU General Public License, simplicity, fast performance,
+flexibility and scalability.
 
 A system design of many highly decentralized clients all pushing data
 continuously to a central MySQL server requires high server performance, high
@@ -48,11 +49,12 @@ This data can the be handled using the programming environment most comfortable
 for users and can be used to perform automatic reporting, data treatment or as
 input to scripts that will produce plots based on the data. SQL also allows for
 very efficient data treatment directly from the SQL-server which can be very
-useful to get a quick overview of the acquired data. As an example SQL
-statements can be used to plot the pressure in a vacuum chamber at 1\,A.M. in
-the morning for the last month. This can be a useful tool to monitor the
-general health of the chamber, i.e. if leaks has developed, a valve is
-failing, a roughing pump is malfunctioning etc.
+useful to get a quick overview of the acquired data. 
+
+As an example SQL statements can be used to plot the pressure in a vacuum
+chamber at 1\,A.M. in the morning for the last month. This can be a useful tool
+to monitor the general health of the chamber, i.e. if leaks has developed, a
+valve is failing, a roughing pump is malfunctioning etc.
 
 \begin{verbatim} 
 select unix_timestamp(date(time)), avg(pressure) from
