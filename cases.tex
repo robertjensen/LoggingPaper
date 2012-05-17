@@ -2,6 +2,35 @@ The existence of this data system is paramount to several automation tasks
 in our lab. Below a few examples of the use of the data system for
 these purposes are described.
 
+\subsection{Morning pressure}\label{sec:morning_pressure}
+
+As an example SQL statements can be used to plot the pressure in a vacuum
+chamber at 1\,A.M. in the morning for the last month. This can be a useful tool
+to monitor the general health of the chamber, i.e. if leaks has developed, a
+valve is failing, a roughing pump is malfunctioning etc.
+
+\begin{verbatim} 
+select unix_timestamp(date(time)), avg(pressure) from
+pressure_microreactor where hour(time) = 1 and minute(time) between 00 and 20
+and time between {from} and {to} group by date(time) order by time desc limit
+30; 
+\end{verbatim}
+where \{from\}  and \{to\} should be replaced with the
+relevant time interval.
+
+The output from as a statement like this is illustrated in
+Figure~\ref{fig:morning_pressure}.
+\begin{figure}
+ \begin{center}
+ \includegraphics[width=10cm]{morning_pressure.png}
+ \caption{ The morning pressure in a vacuum chamber at the department. The
+   pressure gauge is unable to read high pressures, and thus no data is
+   available from periods where the chamber is vented for maintenance.
+   \label{fig:morning_pressure}
+ } 
+ \end{center}
+\end{figure}
+
 \subsection{Sample cleaning}
 In the field of catalysis, one direction of research concerns gas
 reactivity studies on the surface of single crystal samples under
