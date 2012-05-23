@@ -451,15 +451,15 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1"
+     inkscape:zoom="2.8284271"
      inkscape:cx="415.24062"
-     inkscape:cy="573.91549"
+     inkscape:cy="644.62617"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1680"
-     inkscape:window-height="992"
-     inkscape:window-x="1280"
+     inkscape:window-width="1920"
+     inkscape:window-height="1022"
+     inkscape:window-x="1680"
      inkscape:window-y="26"
      inkscape:window-maximized="1"
      showguides="true"
@@ -472,7 +472,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -1297,15 +1297,15 @@
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="181.42578"
-       y="312.73035"
+       x="165.86943"
+       y="313.43744"
        id="text5389-0-0"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan5391-1-8"
-         x="181.42578"
-         y="312.73035"
-         style="font-size:12px">STM</tspan></text>
+         x="165.86943"
+         y="313.43744"
+         style="font-size:12px">Microscopy</tspan></text>
     <rect
        style="fill:none;stroke:#000000;stroke-width:0.75453806;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        id="rect10384"

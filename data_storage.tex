@@ -1,69 +1,64 @@
-For storage of acquired data a centralized server has been
-implemented. Storing all acquired experimental data in a database on a
-centralized server running open source software has a number of
-attractive features. Firstly, by storing the data on a centralized
-server, backup of all experimental data is enormously simplified
-compared to backup of individual computers. Backup of experimental
-data on the local client is hence, from a user's point of view
-automatic, as this can be performed by routine jobs on the
-server. Secondly, the data is stored in a standardized and open format
-which allows for easy export of the data to any platform, open formats
-or software source. This makes data exchange across different
-platforms immensely more simple. Thirdly, by open sourcing all of the
-code used to visualize and manipulate data from the database,
-collaboration between several different groups is possible thus
-increasing the number of developers to optimize the code and further
-increase functionality.
+For storage of acquired data a centralized server has been implemented. Storing
+all acquired experimental data in a database on a centralized server running
+open source software has a number of attractive features. Firstly, by storing
+the data on a centralized server, backup of all experimental data is enormously
+simplified compared to backup of individual computers. Backup of experimental
+data is, hence, from a user's point of view automatic as this can be performed
+by routine jobs on the server. Secondly, the data is stored in a standardized
+and open format which allows for easy export of the data to any platform, open
+formats or software source. This makes data exchange across different platforms
+immensely more simple. Thirdly, by open sourcing all of the code used to
+visualize and treat data from the database, collaboration between several
+different groups is possible thus increasing the number of developers to
+optimize the code and further increase functionality.
 
-A centralized storage of data can be accomplished in many
-ways. However, in experimental laboratories where large amounts of
-data are recorded a database is an obvious choice for storage. To keep
-the server backend simple we have chosen a relational database. As
-specific implementation we have chosen MySQL due to it being released
-under the GNU General Public License\cite{gpl}, and due to its
-simplicity, fast performance, flexibility and scalability.
+A centralized storage of data can be accomplished in many ways. However, in
+experimental laboratories where large amounts of data are recorded a database
+is an obvious choice for storage. To keep the server backend simple a
+relational database has been chosen. As specific implementation MySQL has been
+chosen due to its GNU General Public License\cite{gpl}, simplicity, fast
+performance, flexibility and scalability.
 
 A system design of many highly decentralized clients all pushing data
-continuously to a central MySQL server requires high server
-performance, high uptimes as well as a flexible storage ensuring easy
-expansion of storage space if needed. To ensure these properties of
-the system it has been designed as simple as possible to avoid
-unnecessary complications and to ensure that this central component
-can be easily managed by the professional IT-staff at the
-department. It is important to realize, that while the clients can
-easily have the ''age diversity'' of accumulated scientific equipment,
-be exposed to harsh conditions in the lab and by managed by the
-scientific staff, that server however need to be managed and handled
+continuously to a central MySQL server requires high server performance, high
+uptimes as well as a flexible storage ensuring easy expansion of storage space
+if needed. To ensure these properties of the system it has been implemented
+with as few modification to the configuration of the standard server software
+as possible, which helps to ensure that this central component can easily be
+managed by the professional IT-staff at the department. It is important to
+realize that while the clients can easily have the ''age diversity'' of
+accumulated scientific equipment, be exposed to harsh conditions in the lab and
+be managed by the scientific staff the server needs to be managed and handled
 with all the care associated with a production environment server.
 
-To protect against pollution of the various setups tables in the
-database each client has its own username and password which is not
-part of the code (typically it will be managed in the local
-ODBC-settings of the client). In this way, interface code can flow
-back and forth between different setups without the risk of one setup
-accidentally logging data to other setup's tables.
+To protect against pollution of the various setups tables in the database each
+client has its own username and password which is not part of the code
+(typically it will be managed in the local ODBC-settings of the client). In
+this way, interface code can flow back and forth between different setups
+without the risk of one setup accidentally logging data to other setup's
+tables.
 
-For each of the setups that is connected to this system, the following
-table structure is implemented. Each of the measurements that are
-continuously logged has their own table, where the values are logged
-as a function of date and time. All the specific measurements, such as
-spectra, scans and values monitored over a well-defined time span are
-stored in two tables in the database, a metadata table and a data
-table. In the metadata table \textbf{all} metadata pertaining to the
-measurement is saved in one row. In the data table, all the individual
-data points are saved in one row each, along with the id number of the
-entry in the metadata table that pertains to the measurement (referred
-to as the measurement id). This structure is a compromise between
-space usage and simplicity, as it does lead to extra space being used
-to store the measurement id once for every data point, but on the
-other hand it also makes it possible and simple to store all the
-different kinds of xy-data in just two tables.
+For each of the setups that is connected to this system, the following table
+structure is implemented. Each of the measurements that are continuously logged
+has their own table, where the values are logged as a function of date and
+time. All the specific measurements, such as spectra, scans and values
+monitored over a well-defined time span are stored in two tables in the
+database, a metadata table and a data table. In the metadata table \textbf{all}
+metadata pertaining to the measurement is saved in one row. In the data table
+xy-values and a measurement id is saved in one row per xy-value entry. The
+metadata in the metadata table is then connected to the data points in the data
+table by a unique id attached to each xy-value entry. This structure is a
+compromise between space usage and simplicity as it leads to extra space being
+used to store the measurement id once for every data point. This, on the other
+hand, makes it possible and simple to store all the different kinds of xy-data
+in just two tables.
 
 \subsection{Data extraction} \label{sec:data_extraction}
-The flexible nature of SQL allows one to extract data in many
-ways. Complete datasets, data in a certain time interval for a
-continuously logged measurements or data pertaining a specific
-measurements can be retrieved by simple statements,
+
+The flexible nature of SQL allows one to extract data in many ways. Complete
+datasets, data in a certain time interval for a continuously logged
+measurements or data pertaining a specific measurements can be retrieved by
+simple statements, 
 \begin{verbatim}
  SELECT * FROM table_name
  SELECT * FROM table_name WHERE time BETWEEN {from} AND {to}
@@ -73,14 +68,13 @@ measurements can be retrieved by simple statements,
 replaced with specific values)
 
 This data can then be handled using the programming environment most
-comfortable for the user and can be used to perform automatic
-reporting, data treatment or as input to scripts that will produce
-plots based on the data. SQL also allows for very efficient data
-treatment directly from the SQL-server, which can be very useful to
-get a quick overview of the acquired data, as illustrated e.g.\ in the
-case in section \ref{sec:morning_pressure}.
+comfortable for the user and can be used to perform automatic reporting, data
+treatment or as input to scripts that will produce plots based on the data. SQL
+also allows for very efficient data treatment directly from the SQL-server,
+which can be very useful to get a quick overview of the acquired data, as
+illustrated e.g.\ in the case in section \ref{sec:morning_pressure}.
 
-A further advantage of SQL servers is the standardization, which makes it easy to
-change the choice of implementation, if it is wanted for some reason. Several
-open source implementations of SQL-servers exists including Firebird,
+A further advantage of SQL servers is the standardization, which makes it easy
+to change the choice of implementation, if it is wanted for some reason.
+Several open source implementations of SQL-servers exists including Firebird,
 PostgreSQL, Oracle, Mimer SQL etc.
