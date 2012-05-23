@@ -1,21 +1,22 @@
-The system is based on Python, PHP and HTML/CSS integrated with Linux servers
-running MySQL and Apache (LAMP setup). Experimental data is acquired on the
-user side and subsequently stored in the MySQL database. Python, PHP and
-HTML/CSS is used to extract data from the database and present them to the end
-user in a simple user interactive webinterface for data visualization and
-manipulation. Python was primarily chosen due to its tight integration with
-scientific packages which makes data analysis and treatment more
-convenient\cite{Cahn2007}. PHP and HTML/CSS is used to display data in
-standardized formats suitable for web browsers and process input from the user.
-The combination of PHP and HTML/CSS to store data and process user input from
-webpages is very flexible and has proven successful in other parts of the
-scientific community\cite{Crane2008}.
+The system is based on Python, PHP and HTML/CSS integrated with Linux
+servers running MySQL and Apache (LAMP setup). Experimental data is
+acquired on the user side and subsequently stored in the MySQL
+database. Python, PHP and HTML/CSS is used to extract data from the
+database and present them to the end user in a simple interactive
+webinterface for data visualization and manipulation. Python was
+primarily chosen due to its tight integration with scientific
+packages, such as SciPy and NumPy, which makes data analysis and
+treatment more convenient\cite{Cahn2007}. PHP and HTML/CSS is used to
+display data in standardized formats suitable for web browsers and
+process input from the user. The combination of PHP and HTML/CSS to
+process user input from webpages is very flexible and has proven
+successful in other parts of the scientific community\cite{Crane2008}.
 
 The system consists of three logically separate components as illustrated in
 Figure~\ref{fig:system_overview}; 1) the equipment component where all
-communication with apparatus and acquisition of data is performed 2) the
+communication with equipment and acquisition of data is performed 2) the
 servers which consist of the MySQL server that stores the acquired data from
-experiments and the webserver (Apache) which interacts and presents the user with data
+experiments and the Apache webserver which interacts and presents the user with data
 retrieved from the database and 3) the user component which is made up of the
 clints whishing to access the data. \begin{figure}
  \begin{center}
@@ -27,22 +28,24 @@ clints whishing to access the data. \begin{figure}
  \end{center}
 \end{figure}
 
-The system is highly modular meaning the servers can accept data from a range
-of different sources. In the current setup equipment interfaced with RS232,
-GPIB, USB, analog/digital data acquisition cards standards are logged to the
-MySQL database. The user can furthermore use programs written in a wide variety
-of languages. As a testimony to this, software written in both LabView and
-Python are used to save data to the database. How the integration with the
-server and subsequent storage of data in the database is performed is hence a
-user determined design decision. This has a number of attractive advantages.
-The user(s) can integrate existing software with the databases quickly and
-without the need to rewrite any previous interface software written for
-experimental setups. Furthermore, due to the flexibility of system, if online
-storage in the database during acquisition is not possible due to software
-limitations the data can still be saved in the database by subsequent offline
-parsing of data files. This, however, still requires that the file format,
-which holds the data, is specified or the data can be exported to a flat text
-format from the acquisition software. 
+The system is highly flexible meaning the servers can accept data from
+a range of different sources. In the current setup equipment
+interfaced with RS232, GPIB, USB and analog/digital data acquisition
+cards standards are logged to the MySQL database. The user can
+furthermore use programs written in a wide variety of languages. As a
+testimony to this, software written in both LabView and Python are
+used to save data to the database. How the integration with the server
+and subsequent storage of data in the database is performed is hence a
+user determined design decision. This has a number of advantages.  The
+user(s) can integrate existing software with the databases quickly and
+without the need to rewrite any previous interface software written
+for experimental setups. Furthermore, due to the flexibility of
+the system, if storage in the database during acquisition is not
+possible due to software limitations the data can still be saved in
+the database by subsequent post experiment parsing of data files. This,
+however, still requires that the file format, which holds the data, is
+specified or the data can be exported to a flat text format from the
+acquisition software.
 
 The servers consist of a MySQL server and a webserver. All experimental data is
 stored on the MySQL server and is presented to the user from the webserver. If
@@ -54,8 +57,9 @@ subsequently presented for the user. To accommodate a range of users and
 provide the largest flexibility the webserver displays both a standard HTML/CSS
 site for desktop PCs and a mobile version suitable for tablet/smartphone users.
 
-The webinterface, which takes user input and displays data to the user, is
-also capable of routine data treatment. This can either be zoom of data,
-plotting on a log scale, performing a running average, etc. The plotting is
-easy extendable allowing the user to add any function necessary. In this way
-the user can easily and quickly get an overview of acquired data.
+The webinterface, which takes user input and displays data to the
+user, is also capable of routine data treatment. This can either be
+zoom of data, plotting on a log scale, performing a running average,
+etc. The data treatment is easily extendable allowing the user to add
+any function necessary. In this way the user can easily and quickly
+get an overview of acquired data.
