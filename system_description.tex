@@ -21,17 +21,17 @@ of different sources. In the current setup equipment interfaced with RS232,
 GPIB, USB and analog/digital data acquisition cards standards are logged to the
 MySQL database. The user can furthermore use programs written in a wide variety
 of languages. As a testimony to this, software written in both LabView and
-Python are used to save data to the database. How the integration with the
-server and subsequent storage of data in the database is performed is hence a
-user determined design decision. This has a number of advantages.  The user(s)
-can integrate existing software with the databases quickly and without the need
-to rewrite any previous interface software written for experimental setups.
-Furthermore, due to the flexibility of the system, if storage in the database
-during acquisition is not possible due to software limitations the data can
-still be saved in the database by subsequent post experiment parsing of data
-files. This, however, still requires that the file format, which holds the
-data, is specified or the data can be exported to a flat text format from the
-acquisition software.
+Python~\cite{python} are used to save data to the database. How the integration
+with the server and subsequent storage of data in the database is performed is
+hence a user determined design decision. This has a number of advantages.  The
+user(s) can integrate existing software with the databases quickly and without
+the need to rewrite any previous interface software written for experimental
+setups. Furthermore, due to the flexibility of the system, if storage in the
+database during acquisition is not possible due to software limitations the
+data can still be saved in the database by subsequent post experiment parsing
+of data files. This, however, still requires that the file format, which holds
+the data, is specified or the data can be exported to a flat text format from
+the acquisition software.
 
 The servers consist of a MySQL server and a web server. All experimental data
 acquired by the user is stored in the MySQL database and is presented to the
