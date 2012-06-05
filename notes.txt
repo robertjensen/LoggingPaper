@@ -31,3 +31,7 @@ important automation tasks. Two possible cases to highlight is
  1. Configuration
  2. X-axis conversion
  3. Variable interval selection
+
+== References
+
+Python, see here: http://docs.python.org/faq/general.html#are-there-any-published-articles-about-python-that-i-can-reference.
