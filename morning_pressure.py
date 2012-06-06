@@ -29,7 +29,10 @@ CURSOR.execute("select unix_timestamp(date(time)), avg(pressure) from "
                )
 DATA = np.array(CURSOR.fetchall())
 
+# Reduction factor for the number of xticks
 REDUCTION = 3
+
+# Generate xticks
 TZ = timedelta(hours=1)
 XTICK_POSITIONS = []
 DATETIMES = []
@@ -39,14 +42,15 @@ for n, timestamp in enumerate(reversed(DATA[:, 0])):
         DATETIMES.append(datetime.fromtimestamp(timestamp) + TZ)
 XLABELS = [date_time.strftime('%b-%d %H:%M') for date_time in DATETIMES]
 
+# Make the figure
 FIG, AX = plt.subplots(1, 1, 1)
 AX.bar(DATA[:, 0] + 3600, DATA[:, 1], width=12000, color='black',
        align='center', log=True)
+AX.set_ylabel('Pressure / torr')
 
+# Exchange the xticks
 AX.set_xticks(XTICK_POSITIONS)
 AX.set_xticklabels(XLABELS, rotation=30, horizontalalignment='right')
-AX.set_ylabel('Pressure / torr')
 plt.subplots_adjust(bottom=0.2)
-plt.show()
 
-#print DATA
+plt.show()
