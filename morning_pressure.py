@@ -61,4 +61,5 @@ AX.set_xticks(XTICK_POSITIONS)
 AX.set_xticklabels(XLABELS, rotation=30, horizontalalignment='right')
 #plt.subplots_adjust(bottom=0.2)
 
-plt.show()
+plt.savefig('morning_pressure.png')
+#plt.show()
