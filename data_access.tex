@@ -2,7 +2,7 @@ As mentioned in section~\ref{sec:data_extraction} it is both possible and very
 easy to access data directly from the database using either direct SQL
 statements or programming. This is very practical for the cases where it is
 desired to perform data treatment on the data or to produce high quality
-graphs. However, most of the time it is sufficient to simply look at the data
+graphs. However, typically it is sufficient to simply look at the data
 and possibly perform light data treatment. For this kind of data analysis it
 would be highly impractical to write small custom pieces of software for each
 kind of data that the users wish to look at. For this reason we have developed
@@ -10,7 +10,7 @@ a framework for visualization of the stored data that allows quick and easy
 access to all data. The framework includes support for basic data treatment as
 well as the option to plot several data sets at the same time for easy
 comparison of results and to export the data to local files. An example of the
-web interface used for plotting is shown in Figure~\ref{fig:webinterface}
+web interface used for plotting is shown in Figure~\ref{fig:webinterface}.
 \begin{figure}
  \begin{center}
  \includegraphics[width=10cm]{mass_spectra_comparison.png}
@@ -50,10 +50,10 @@ Below is shown an example of a continuously logged pressure:
 
 The system is flexible towards choice of plotting library which is a great
 advantage since different plotting libraries are optimal for different tasks.
-At the moment all plotting is performed by matplotlib\cite{matplotlib}.  As a
-testimony to the flexibility of the setup we have moved from our original
-backend based on JpGraph\cite{jpgraph} to a backend based on matplotlib without
-significant changes to the backend code. Currently, we are investigating moving
-some of the display code to the JavaScript based dygraphs\cite{dygraphs} thus
-producing a dual display system since this plotting library allows for real-time 
-manipulation of the data using a mouse through an ordinary web browser.
+At the moment the default plots are produced by JavaScript based
+dygraphs\cite{dygraphs} allowing real-time manipulation of the data using a
+mouse through an ordinary web browser. As a testimony to the flexibility of the
+setup matplotlib\cite{matplotlib} is also implemented and can also be used for
+visualizing data if the user(s) wishes. JpGraph\cite{jpgraph} has previously
+been implemented as plotting library without significant changes to the backend
+code demonstrating the large flexibility of system.
