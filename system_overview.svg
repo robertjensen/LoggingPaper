@@ -14,7 +14,7 @@
    height="1052.3622047"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.1 r9760"
+   inkscape:version="0.48.2 r9819"
    sodipodi:docname="system_overview.svg"
    inkscape:export-filename="/home/thomas/Documents/CINF/articles/LoggingPaper/system_overview.png"
    inkscape:export-xdpi="600"
@@ -452,15 +452,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2.8284271"
-     inkscape:cx="415.24062"
+     inkscape:cx="244.13518"
      inkscape:cy="644.62617"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="1022"
-     inkscape:window-x="1680"
-     inkscape:window-y="26"
+     inkscape:window-width="1680"
+     inkscape:window-height="1018"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
      inkscape:window-maximized="1"
      showguides="true"
      inkscape:guide-bbox="true" />
@@ -472,7 +472,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -480,45 +480,35 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
-    <path
-       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#Arrow1Lend-85)"
-       d="m 306.59613,399.19503 c 27.24936,30.4662 27.24936,30.4662 27.24936,30.4662"
-       id="path4610"
-       inkscape:connector-curvature="0" />
-    <path
-       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#Arrow1Lend)"
-       d="m 386.94934,398.55523 c -18.1306,33.24694 -18.1306,33.24694 -18.1306,33.24694"
-       id="path4610-4"
-       inkscape:connector-curvature="0" />
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
        x="423.3877"
-       y="402.73129"
+       y="400.73129"
        id="text5389-8"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan5391-9"
          x="423.3877"
-         y="402.73129"
+         y="400.73129"
          style="font-size:12px;text-align:center;text-anchor:middle">Raspberry</tspan><tspan
          sodipodi:role="line"
          x="423.3877"
-         y="417.73129"
+         y="415.73129"
          style="font-size:12px;text-align:center;text-anchor:middle"
          id="tspan4332">Pi</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="317.99689"
+       x="299.99689"
        y="441.22501"
        id="text5389-2"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan5391-07"
-         x="317.99689"
+         x="299.99689"
          y="441.22501"
-         style="font-size:12px">SQL Server</tspan></text>
+         style="font-size:12px">Database Server</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#Arrow1Lend)"
        d="m 343.63955,616.91762 c -0.89633,66.05701 -0.89633,66.05701 -0.89633,66.05701"
@@ -545,17 +535,17 @@
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
        x="417.27698"
-       y="439.42242"
+       y="479.42242"
        id="text5389-2-8-1-1-8"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          x="417.27698"
-         y="439.42242"
+         y="479.42242"
          style="font-size:12px;text-align:center;text-anchor:middle"
          id="tspan5581-5">Alarm</tspan><tspan
          sodipodi:role="line"
          x="417.27698"
-         y="454.42242"
+         y="494.42242"
          style="font-size:12px;text-align:center;text-anchor:middle"
          id="tspan5651">monitor</tspan></text>
     <path
@@ -1489,7 +1479,7 @@
          sodipodi:role="line"
          id="tspan4426"
          x="145.03711"
-         y="415.36218">Equipment</tspan></text>
+         y="415.36218">Acquisition</tspan></text>
     <rect
        style="fill:none;stroke:#0000ff;stroke-width:1.5;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:12,12;stroke-dashoffset:0"
        id="rect3468-2"
@@ -1499,6 +1489,16 @@
        y="426.35486"
        rx="1.2425799"
        ry="2.2307947" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#Arrow1Lend-85)"
+       d="m 306.59613,399.19503 c 27.24936,30.4662 27.24936,30.4662 27.24936,30.4662"
+       id="path4610"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#Arrow1Lend)"
+       d="m 386.94934,398.55523 c -18.1306,33.24694 -18.1306,33.24694 -18.1306,33.24694"
+       id="path4610-4"
+       inkscape:connector-curvature="0" />
     <rect
        style="fill:none;stroke:#800080;stroke-width:1.5;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:12,12;stroke-dashoffset:0"
        id="rect3468-2-6"
