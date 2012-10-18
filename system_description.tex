@@ -10,29 +10,25 @@ which consists of the clients wishing to access the data.
  \begin{center}
  \includegraphics[width=10cm]{system_overview.png}
  \caption{
-   A schematic representation of the structure of data handling system.
+   A schematic representation of the structure of the data handling system.
    \label{fig:system_overview}
  } 
  \end{center}
 \end{figure}
 
-The system is highly flexible and modular meaning and the servers can accept
-data from a range of different sources and the individual components, cf.
-Figure~\ref{fig:system_overview}, can be used independently. In the current
-setup equipment interfaced with RS232, GPIB, USB and analog/digital data
-acquisition cards standards are logged to the database via the acquisition
-component. The user can furthermore use programs written in a wide variety of
+The system is highly flexible and modular meaning that the servers can accept
+data from a range of different sources and that each server function can be accessed individually. The user can furthermore use programs written in a wide variety of
 languages and is only limited by the chosen language's ability to interface to
-relational databases. As a testimony to this, software written in both LabView
-and Python\cite{python} are used to save data to the database. How the
+relational databases. As a testimony to this, software written in both LabVIEW
+and Python\cite{python} are currently used to save data to the database.
+How the
 integration with the server and subsequent storage of data in the database is
 performed is hence a user determined design decision. This has a number of
 advantages. The user(s) can integrate existing software with the databases
 quickly and without the need to rewrite any previous interface software written
 for experimental setups. Furthermore, due to the flexibility of the system, if
 storage in the database during acquisition is not possible due to software
-limitations the data can still be saved in the database by subsequent post
-experiment parsing of data files. This, however, still requires that the file
+limitations the data can still be saved in the database by subsequent parsing of data files. This, however, still requires that the file
 format, which holds the data, is specified or the data can be exported to a
 flat text format from the acquisition software.
 
@@ -40,11 +36,11 @@ The servers consist of a database server and a web server. In our specific
 implementation a MySQL database has been chosen. All experimental data acquired
 by the user is stored in the MySQL database and is presented to the user from
 the web server. If needed, experimental data from the MySQL server can be
-retrieved directly from the database by user written software for later
+retrieved directly from the database by user written scripts for later
 analysis. The web server runs a LAMP (Linux, Apache, MySQL, PHP/Python)
-package. Python, PHP and HTML/CSS is used to extract data from the database
-and present them to the end user in a simple interactive web interface for data
-visualization and simple treatment algorithms. Python was primarily chosen due
+stack. Python, PHP and HTML/CSS is used to extract data from the database
+and present them to the end user in a simple interactive web interface for
+visualization and simple data treatment. Python was primarily chosen due
 to its tight integration with scientific packages, such as SciPy and NumPy,
 which makes data analysis and treatment more convenient\cite{Cahn2007}. PHP and
 HTML/CSS is used to display data in standardized formats suitable for web
@@ -55,8 +51,9 @@ range of users and provide the largest flexibility the web server displays both
 a standard HTML/CSS site for desktop PCs and a mobile version suitable for
 tablet/smartphone users.
 
-The web interface, which takes user input and displays data to the user, is also
-capable of routine data treatment. This can either be zoom of data, plotting on
-a log scale, performing a running average, etc. The data treatment is easily
-extendable allowing the user to add any function necessary. In this way the
-user can easily and quickly get an overview of acquired data.
+
+%The web interface, which takes user input and displays data to the user, is also
+%capable of routine data treatment. This can either be zoom of data, plotting on
+%a log scale, performing a running average, etc. The data treatment is easily
+%extendable allowing the user to add any function necessary. In this way the
+%user can easily and quickly get an overview of acquired data.

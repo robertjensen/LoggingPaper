@@ -1,9 +1,9 @@
 In research departments consisting of several experimental setups decentralized
-data acquisition from independent clients to a central server is the most
-attractive solution. This is due to the larger flexibility of the system, lower
+data acquisition from independent clients to a central server is a very
+attractive solution. This is due to the large flexibility of the system, low
 probability of dataloss and to simplify backup procedures of all experimental
 data. To be able to save acquired data from a range of different computer
-hardware and instrumentation interfacing of many types of equipment is
+hardware and scientific instruments, interfacing of many types of equipment is
 necessary.
 
 In practice this is achieved by formulating a set of general design goals that
@@ -11,15 +11,15 @@ will serve as computer language and hardware independent pseudo-code which will
 help the process of designing a new acquisition client to obtain conformity of
 the system. The design goals of our implementation are:
 
-* To minimize data loss and to provide live data access in the laboratory
-  from the server all clients must store data for as short amount of time as
+* To minimize data loss and to provide live data access, 
+  all clients must store data for as short amount of time as
   possible before handing of the data to a central server. Preferably, the data
   should be stored on the server as soon as it is acquired. For data being
   recorded over longer time-spans this means that data must be live-streamed to
   the server.
 
-* To avoid data-loss in the event of no network connection or maintenance
-  of the central server all clients collecting critical data must implement a
+* To avoid data-loss in the event of network failure or maintenance
+  of the central server, all clients collecting critical data must implement a
   local queue that will temporarily hold data until the central server can
   again be accessed. The client must continuously check if the server is
   available again and as soon as possible deliver queued data to the server.
@@ -32,8 +32,8 @@ the system. The design goals of our implementation are:
   client will then, based on relevant heuristics, decide whether a new data
   point should stored on the server. In practise this is often implemented by
   waiting for either a given relative change in the signal or a predefined time
-  since last recording of a data point. An example of such an implementation is
-  shown below.
+  since last recording of a data point. An example of such an implementation
+  in python is shown below.
 
 \begin{verbatim}
 max_time_between_points = 600; deviation = 0.1

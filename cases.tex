@@ -48,7 +48,7 @@ overnight or over several days. Obviously, for such procedures the equipment is
 unmanned and no-one is present to monitor it. The software that execute the
 procedure are themselves responsible for the safety of the system/equipment and
 for shutting it down if something unintentional happens. With continuous
-logging it is now a simple task to add surveillance to these procedures that
+logging it is however a simple task to add surveillance to these procedures that
 alerts the user if the procedure has been stopped. If this occurs, it is
 subsequently possible for the operator to assess if it is safe to start the
 experiment again, even from home. This can help prevent a loss of
@@ -56,8 +56,8 @@ experimentation time if the experiment has been stopped e.g.\ during weekends
 or vacation time.
 
 An example where this is used is for the cleaning of metal single crystal
-samples before experimentation. The cleaning of the surface is achieved by
-running a number (5-20) of cleaning cycles. Each of these cycles can take up to
+samples before experimentation. The cleaning of the particular surface is achieved by
+running a number (eg. 5-20) of cleaning cycles. Each of these cycles can take up to
 several hours. Before this task was automatized, it typically required simple
 manual intervention 2-4 times during a 30 to 120 minute cycle. Obviously, this
 was a suboptimal solution requiring periodical manual work. After
@@ -77,18 +77,18 @@ utilize nights and weekends is a noticeable improvement.
 
 \subsection{Cooling water alarms}\label{sec:cooling_water_alarms}
 Several important pieces of equipment in our lab require cooling. If the
-cooling disappears it can result in break down of this equipment which can
+cooling fails it can result in break down of this equipment which can
 be quite expensive in repair costs and lost experiment time. Using the
 continuously logged data, critical system parameters can be monitored and used
-to trigger alarms when these fall out of specified ranges. To use this feature
-to implement surveillance of the cooling temperature measurements on all the
-equipment with critical cooling requirements have been mounted and all of these
-temperatures logged via the data system. This approach has the desirable side
+to trigger alarms when these fall out of specified ranges. This feature is
+used to monitor the temperature of all the
+equipment with critical cooling requirements. All temperatures are 
+logged via the data system and alarms will trigger if cooling fails. This approach has the desirable side
 effect that system health can be monitored (to the extent it is given by the
 temperature) of each piece of equipment individually to evaluate if the
 equipment is getting old or requires maintenance. To implement the alarms a
 program has been written that retrieves the latest temperatures from the
 database, compares them with values from a previous time interval and sends out
 an alarm via email if they increased out of range. Appropriately coupled with
-email alarms, e.g.\ on smartphones, this feature provides the real-time user
+email alarms, e.g.\ on smartphones, this feature provides the user with real-time
 notification of critical cooling loss.
