@@ -1,9 +1,9 @@
 The existence of this data system is paramount to several automation and system
 health monitoring tasks in our laboratory. Below a few examples are described
-of the use of the data system for these purposes. The examples given are how to
+of the use of the data system for these purposes. The examples cover how to
 create a system health development graph from the continuously logged pressure
 data, how we use the continuously logged data to monitor the health and status
-of long duration experiments from home and finally how it can be used to create
+of long duration experiments remotely and finally how it can be used to create
 alarms if some of the system parameters fall outside specified security ranges.
 
 \subsection{Monitoring system health}
@@ -45,15 +45,14 @@ make new plots of the latest time period.
 Within surface science it is not unusual to have experiments or preparation
 procedures before an experiment running for extended periods of time i.e.
 overnight or over several days. Obviously, for such procedures the equipment is
-unmanned and no-one is present to monitor it. The software that execute the
-procedure are themselves responsible for the safety of the system/equipment and
-for shutting it down if something unintentional happens. With continuous
-logging it is however a simple task to add surveillance to these procedures that
-alerts the user if the procedure has been stopped. If this occurs, it is
-subsequently possible for the operator to assess if it is safe to start the
-experiment again, even from home. This can help prevent a loss of
-experimentation time if the experiment has been stopped e.g.\ during weekends
-or vacation time.
+unmanned during some periods. The software is responsible for the safety of the
+system/equipment and for shutting it down if something unintentional happens.
+With continuous logging it is, however, a simple task to add surveillance to
+these procedures that alerts the user by mail or text messages if the procedure
+has been stopped. If this occurs, it is subsequently possible for the operator
+to assess if it is safe to start the experiment again, even remotely. This
+prevents loss of experimentation time if the experiment has been stopped
+unmanned time.
 
 An example where this is used is for the cleaning of metal single crystal
 samples before experimentation. The cleaning of the particular surface is achieved by

@@ -15,7 +15,7 @@ web interface used for plotting is shown in Figure~\ref{fig:webinterface}.
  \begin{center}
  \includegraphics[width=10cm]{mass_spectra_comparison.png}
  \caption{Demonstration of the visualization interface. Data (here mass
-   spectrometer data) can be plotted and compared in a web browser allowing
+   spectrometer data) can be plotted in a web browser allowing
    easy comparison between data. \label{fig:webinterface}
  } 
  \end{center}
@@ -24,15 +24,15 @@ web interface used for plotting is shown in Figure~\ref{fig:webinterface}.
 The goal for the visualization module has not been to provide high quality
 plots since this is a large task that is best solved with either dedicated
 software suites or custom scripts. Instead, the quality of the plots was
-targeted such that it is sufficient for different kinds of everyday use
-including presentations at informal group meetings, as starting point for
-discussion of data, quick data comparison etc. To realize this form of
-visualization a frontend/backend topology has been implemented. The code that
-handles user input is retrieved in HTML and PHP thus allowing user input to be
-acquired from a web browser. The backend consists of an open source plotting
-library, interface code to feed data into the plotting code and plot
-preferences specific to each experimental setup. The backend is mainly written
-in Python and the configuration read from a XML file unique to each setup. The
+targeted to be sufficient for different kinds of everyday use including
+presentations at group meetings, as a starting point for a discussion of data,
+quick data comparison etc. To realize this form of visualization a
+frontend/backend topology has been implemented. The code that handles user
+input is retrieved in HTML and PHP thus allowing user input to be acquired from
+a web browser. The backend consists of an open source plotting library,
+interface code to feed data into the plotting code and plot preferences
+specific to each experimental setup. The backend is mainly written in Python
+and the configuration read from a XML file unique to each setup. The
 preferences file contain a settings section for each different kind of plot.
 Below is shown an example of a continuously logged pressure:
 
@@ -54,6 +54,8 @@ At the moment the default plots are produced by JavaScript based
 dygraphs\cite{dygraphs} allowing real-time manipulation of the data using a
 mouse through an ordinary web browser. As a testimony to the flexibility of the
 setup matplotlib\cite{matplotlib} is also implemented and can also be used for
-visualizing data if the user(s) wishes. Matplotlib produces prettier graphs but at the expense of not allowing dynamic mouse manipulation. JpGraph\cite{jpgraph} has previously
-been implemented as plotting library without significant changes to the backend
-code demonstrating the large flexibility of system.
+visualizing data if the user wishes. Matplotlib produces more presentable
+graphs but at the expense of not allowing dynamic plot manipulation.
+JpGraph\cite{jpgraph} has previously been implemented as plotting library
+without significant changes to the backend code demonstrating the large
+flexibility of system.

@@ -4,29 +4,27 @@ acquired experimental data in a database on a centralized server has a number
 of attractive features. Firstly, by storing the data on a centralized server,
 backup of all experimental data is enormously simplified compared to backup of
 individual computers. Backup of experimental data is, hence, from a user's
-point of view automatic as soon as the data is handed of to the server. The backup task it self is also easily accomplished by the IT department by settings up routine jobs on the server.
-Secondly, the data is stored in a standardized and open format which allows for
-easy export of the data.
-% to any platform, open formats or software source.
-This
-makes data exchange across different platforms immensely more simple. Thirdly,
-by open sourcing all of the code used to visualize and treat data from the
-database, collaboration between several different groups is possible thus
-increasing the number of developers to optimize the code and further increase
-functionality.
+point of view automatic as soon as the data is handed off to the server. The
+backup task itself is also easily accomplished by settings up routine jobs on
+the server. Secondly, the data is stored in a standardized and open format
+which allows for easy export of the data. This makes data exchange across
+different platforms immensely more simple. Thirdly, by open sourcing all of the
+code used to visualize and treat data from the database, collaboration between
+several different groups is possible thus increasing the number of developers
+to optimize the code and further increase functionality.
 
 A centralized storage of data can be accomplished in many ways. However, in
 experimental laboratories where large amounts of data are recorded a database
-is an obvious choice. To keep the server backend simple a
-relational database has been chosen. As specific implementation MySQL has been
-chosen due to its GPL license\cite{gpl}, simplicity, fast
-performance, flexibility and scalability.
+is an obvious choice. To keep the server backend simple a relational database
+has been chosen. As specific implementation MySQL has been chosen due to its
+GPL license\cite{gpl}, simplicity, fast performance, flexibility and
+scalability.
 
 A system design of many highly decentralized clients all pushing data
 continuously to a central MySQL server requires high server performance, high
 uptimes as well as a flexible storage ensuring easy expansion of storage space
 if needed. To ensure these properties of the system it has been implemented
-with as few modification to the configuration of the standard server software
+with as few modifications to the configuration of the standard server software
 as possible, which helps to ensure that this central component can easily be
 managed by the professional IT-staff at the department. It is important to
 realize that while the clients can easily have the ''age diversity'' of
@@ -42,9 +40,9 @@ this way, interface code can flow back and forth between different setups
 without the risk of one setup accidentally logging data to other setup's
 tables.
 
-For each of the setups that is connected to this system, the following table
+For each of the setups that is connected to this system the following table
 structure is implemented: Each of the measurements that are continuously logged
-has their own table, where the values are logged as a function of date and
+has their own table where the values are logged as a function of date and
 time. All the specific measurements, such as spectra, scans and values
 monitored over a well-defined time span are stored in two tables in the
 database, a metadata table and a data table. In the metadata table \textbf{all}
@@ -73,8 +71,8 @@ replaced with specific values)
 This data can then be handled using the programming og data treatment environment most
 comfortable for the user and can be used to perform automatic reporting, data
 treatment or as input to scripts that will produce plots based on the data. SQL
-also allows for very simple data treatment directly from the SQL-server,
-which can be very useful to get a quick overview of the acquired data, as
+also allows for very simple data treatment directly from the SQL-server
+which can be very useful to get a quick overview of the acquired data as
 illustrated e.g.\ in section \ref{sec:morning_pressure}.
 
 A further advantage of SQL servers is the standardization, which makes it easy

@@ -18,10 +18,10 @@ except MySQLdb.OperationalError:
 
 CURSOR = DB.cursor()
 
-FROM_DATE = '2012-03-08 00:30'
-TO_DATE = '2012-04-21 2:00'
-TABLE = 'pressure_microreactorNG'
-#TABLE = 'pressure_stm312'
+FROM_DATE = '2012-08-10 00:30'
+TO_DATE = '2012-10-20 2:00'
+#TABLE = 'pressure_microreactorNG'
+TABLE = 'pressure_stm312'
 
 CURSOR.execute("select unix_timestamp(date(time)), avg(pressure) from "
                "{table} where hour(time) = 1 and minute(time) "
@@ -32,7 +32,7 @@ CURSOR.execute("select unix_timestamp(date(time)), avg(pressure) from "
 DATA = np.array(CURSOR.fetchall())
 
 # Reduction factor for the number of xticks
-REDUCTION = 3
+REDUCTION = 6
 
 # Generate xticks
 TZ = timedelta(hours=1)

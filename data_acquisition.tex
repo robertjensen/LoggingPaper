@@ -1,4 +1,4 @@
-In research departments consisting of several experimental setups decentralized
+In research laboratories comprising of several experimental setups decentralized
 data acquisition from independent clients to a central server is a very
 attractive solution. This is due to the large flexibility of the system, low
 probability of dataloss and to simplify backup procedures of all experimental
@@ -22,7 +22,7 @@ the system. The design goals of our implementation are:
   of the central server, all clients collecting critical data must implement a
   local queue that will temporarily hold data until the central server can
   again be accessed. The client must continuously check if the server is
-  available again and as soon as possible deliver queued data to the server.
+  available and as soon as possible deliver queued data to the server.
 
 * For continuous measurements (e.g. temperatures, pressure in vacuum chambers,
   cooling water flow, etc.) data logging must be implemented in a way that
@@ -30,10 +30,10 @@ the system. The design goals of our implementation are:
   not use excessive amounts of storage. This is typically implemented by
   sampling data with a much higher rate than they are recorded. The local
   client will then, based on relevant heuristics, decide whether a new data
-  point should stored on the server. In practise this is often implemented by
-  waiting for either a given relative change in the signal or a predefined time
-  since last recording of a data point. An example of such an implementation
-  in python is shown below.
+  point should stored on the server or not. In practice this is often
+  implemented by waiting for either a given relative change in the signal or a
+  predefined time since last recording of a data point. An example of such an
+  implementation in Python is shown below.
 
 \begin{verbatim}
 max_time_between_points = 600; deviation = 0.1
