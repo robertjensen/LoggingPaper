@@ -1,0 +1,23 @@
+The manuscript for submission in the folder is based on commit:
+commit 1763fb5dfd55b9268a57a7d55069a5271d776d14
+Author: Thomas Andersen <andersens.mail@gmail.com>
+Date:   Thu Dec 20 09:40:02 2012 +0100
+
+Changes made since switching to .doc format
+
+In abstract:
+"features are described: monitoring" -> "features are described; monitoring"
+
+In Introduction:
+Reason: It does not need to be a flat text file format.
+"is specified or the data can be exported to a flat text format from the acquisition software."
+->
+"is specified or that the data can be exported to a specified file format from the acquisition software."
+
+In Monitoring system health:
+"of a query. The can be used" -> "of a query. This can be used"
+
+In Status of experiments over long time spans:
+"if the experiment has been stopped unmanned time."
+->
+"if the experiment has been stopped at an unmanned time."
