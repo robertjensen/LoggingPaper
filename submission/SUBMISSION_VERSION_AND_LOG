@@ -21,3 +21,7 @@ In Status of experiments over long time spans:
 "if the experiment has been stopped unmanned time."
 ->
 "if the experiment has been stopped at an unmanned time."
+
+In Introduction:
+Added reference to the source code at the end of the section:
+"Examples of the implementation of the data logging clients are located at: https://github.com/CINF/PyExpLabSys and the code for the data presentation website is located at: https://github.com/CINF/DataPresentationWebsite."
