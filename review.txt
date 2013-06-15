@@ -1,0 +1,91 @@
+Hej Robert og Thomas
+
+Nedenfor har jeg indsat stikord til hvad jeg mener vi skal svare revieweren
+og evt. rette i artiklen
+
+
+Reviewer: 1
+
+Comments to the Author In general - while the aim of your system is
+admirable I cannot really see how you are helping the implementer put
+data into your system.  When you say you are compatible across
+multiple systems - do you simply mean that the user can write a client
+that just reads the data off the system and inserts the data into your
+database with some SQL?  I get the point but it's not really an
+innovation.  If you have a REST, SOAP or socket library that you use
+then detail it or if you have future plans for an interface then I'd
+explain that.  I assume your file parsing library just reads in a
+static format?  On the data presentation - concentrate on the plotting
+library tie in with the back end rather than saying the user can get
+data out with SQL and SELECT clauses - if the users knows SQL they'll
+say 'it's just SQL' and if they don't they won't understand it.  I'd
+really try to give more concrete 'meat' to the system and if you
+intend to do things put in a 'futures' section to describe where you
+are going.
+
+Jeg kan ikke helt finde ud af om han vil have svar på den punkter som
+står i dette store afsnit, idet de jo er udspecificeret
+nedenunder. Jeg vil foreslå at vi i første omgang ikke gør det og kun
+adresserer de specifikke spørgsmål, idet de er mere afgrænsede og
+derved nemmere at håndtere.
+
+Specifics
+
+ * I assume you import file format is fixed - maybe give an example of
+   this?
+
+Jeg ved ikke om han mener de filer vi parser. Det virker ikke
+sådan. Jeg ville nok forklare at vi ikke har et import filformat som
+sådan idet vi enten logger dataen direkte fra programmet som optager
+den, eller parser forskellig programmers gemte filer.
+
+ * Do you have a framework to allow the user to input data into your
+   system?
+
+Nej, vi fokuserer på mekanismer til automatiseret dataindsendelse,
+således at det ikke kræver brugerhandlinger at få dataen indsendt.
+
+ * I assume you are using 'standard' Python and not Python 3K
+
+Ja, tilføjes i artikel
+
+ * Reference NumPy and SciPy in your biblio
+
+Ja, det er blevet overset og vi tilføjer det (selvom det er
+møgirriterende idet der jo ikke nogen reference håndtering i word og
+jeg derfor manuelt skal til at omnumerere, oh well.)
+
+ * With the continuous measurement and a local queue to hold data
+   (both good ideas) do you have a framework for this and/or do you
+   plan one in the future?
+
+Ikke et framework som sådan. Vi har de design kretirier som er nævnt i
+artiklen og eksempelimplementationer. Vi kunne eventuelt/bør måske linke til de
+eksempelimplementationer fra PyExpLabSys og nævne dem i artiklen og svaret.
+
+ * You have a big body of Python code - maybe break it into pseudo
+   code with comments to explain what you are doing
+
+Dette kunne bestemt gøres og det vil muligvis være den nemmeste måde
+at tilfredsstille det krav han har om at der kommer "more meat on the
+system". Det kunne tilføjes som et seperat afsnit under
+datapresentationsafsnittet. Jeg har jo en figur i forvejen på
+cinf-wikien, som hurtigt vil kunne rettes til, og det vil være
+rimeligt nemt at beskrive derfra. Jeg mener godt at vi kan være vores
+design bekendt, så det er måske ikke nogen dårlig ide. Det vil
+selvfølgelig tilføje en figur, hvilket måske kunne tolkes som at vi
+ikke har tænkt grundigt nok over indholde til at begynde med, men han
+beder jo selv om at udvide, så det synes jeg er ok.
+
+ * When you say non-centralized systems - give an example even if it is just a case of Excel files floating around on desktops!
+ * You explain your iof MySQL but you could have equally used Postgres for that so why didn't you?  If it is just a flip of a coin - that's cool!
+ * You says that a MySQL instance needs aa high performance server - unless you are uploading massive quantitites of data then you don't.  Teh same of storage capacity - unless you have massive BLOBs you won't need that much storage.  If you focus on storage talk about RAIDs - in layman's language obvioulsy!
+ * When you say standard server software do you just mean a MySQL server?
+ * Giving access to all the tables in a database is a _really_ bad idea - what about security; one client can affect the data for every other client.
+ * ODBC is a bit dated; why not use a direct access and encrypt the username/password on the system.  Also having a different username/password will require the DBA to give new passwords to every user.
+ * If every client needs to make a table that means that each client needs to make a table.  If I have 300 clients they each need their own table?  Why not have a client table to identify the data?
+ * You are using a weirdly formatted database; the metdata should be normalised out - why didn't you do this.  There are valid reasons; look for NoSQL stuff but at the moment it just looks like a weird design.
+ * On the data extarction - you're just describing SQL cut this section right down
+ * You list possible DBMSs; include MS SQL - even if you don't liek it it is a very popular system!
+ * The visualisation system is very interesting - write mreo about this and show examples of swapping out the plotters.  Maybe talk about having setups which don't require files to be written on the server directly?
+ * Are you just using the plotting library and raw HTML/CSS on the browser client side - if you are using DOJO or jQuery add it in and reference it.
