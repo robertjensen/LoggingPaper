@@ -3,7 +3,6 @@ Hej Robert og Thomas
 Nedenfor har jeg indsat stikord til hvad jeg mener vi skal svare revieweren
 og evt. rette i artiklen
 
-
 Reviewer: 1
 
 Comments to the Author In general - while the aim of your system is
@@ -59,33 +58,167 @@ jeg derfor manuelt skal til at omnumerere, oh well.)
    (both good ideas) do you have a framework for this and/or do you
    plan one in the future?
 
-Ikke et framework som sådan. Vi har de design kretirier som er nævnt i
+Ikke et framework som sådan. Vi har de designkriterier som er nævnt i
 artiklen og eksempelimplementationer. Vi kunne eventuelt/bør måske linke til de
-eksempelimplementationer fra PyExpLabSys og nævne dem i artiklen og svaret.
+eksempelimplementationer fra PyExpLabSys og nævne dem i artiklen og
+svaret. Hvad synes i?
 
  * You have a big body of Python code - maybe break it into pseudo
    code with comments to explain what you are doing
 
 Dette kunne bestemt gøres og det vil muligvis være den nemmeste måde
 at tilfredsstille det krav han har om at der kommer "more meat on the
-system". Det kunne tilføjes som et seperat afsnit under
-datapresentationsafsnittet. Jeg har jo en figur i forvejen på
+system". Det kunne tilføjes som et separat afsnit under
+"data access"-afsnittet. Jeg har jo en figur i forvejen på
 cinf-wikien, som hurtigt vil kunne rettes til, og det vil være
 rimeligt nemt at beskrive derfra. Jeg mener godt at vi kan være vores
 design bekendt, så det er måske ikke nogen dårlig ide. Det vil
 selvfølgelig tilføje en figur, hvilket måske kunne tolkes som at vi
-ikke har tænkt grundigt nok over indholde til at begynde med, men han
-beder jo selv om at udvide, så det synes jeg er ok.
+ikke har tænkt grundigt nok over indholdet til at begynde med, men han
+beder jo selv om at udvide, så det synes jeg er ok. Hvis vi gør dette
+skal jeg lige have en af jer til at sende mig figuren fra cinfwiki,
+idet jeg ikke pt har adgang.
 
- * When you say non-centralized systems - give an example even if it is just a case of Excel files floating around on desktops!
+ * When you say non-centralized systems - give an example even if it
+   is just a case of Excel files floating around on desktops!
+
+Ja, Excel, datafiler i tekstformat, eller i formater specifikt for
+opsamlingsprogrammet. Tilføje sætning til artikel som nævner et apr af
+disse eksempler.
+
  * You explain your iof MySQL but you could have equally used Postgres for that so why didn't you?  If it is just a flip of a coin - that's cool!
+
+Vil foreslå at vi svarer at fra et teknisk synspunkt kunne vi sagtens
+have brugt andre database (right Robert?) og at valget faldt på MySQL
+primært fordi den er GPL, hvilket vi godt kan lide (og som allerede er
+nævnt). Tilføje i artiklen at nævne at kravene til database sagtens
+kunne tilfredsstilles af andre databaser.
+
  * You says that a MySQL instance needs aa high performance server - unless you are uploading massive quantitites of data then you don't.  Teh same of storage capacity - unless you have massive BLOBs you won't need that much storage.  If you focus on storage talk about RAIDs - in layman's language obvioulsy!
- * When you say standard server software do you just mean a MySQL server?
- * Giving access to all the tables in a database is a _really_ bad idea - what about security; one client can affect the data for every other client.
- * ODBC is a bit dated; why not use a direct access and encrypt the username/password on the system.  Also having a different username/password will require the DBA to give new passwords to every user.
- * If every client needs to make a table that means that each client needs to make a table.  If I have 300 clients they each need their own table?  Why not have a client table to identify the data?
- * You are using a weirdly formatted database; the metdata should be normalised out - why didn't you do this.  There are valid reasons; look for NoSQL stuff but at the moment it just looks like a weird design.
- * On the data extarction - you're just describing SQL cut this section right down
+
+Ja, her har han måske en pointe. At sige at vi kræver en high
+performance server er måske lidt i overkanten. Vil foreslå at vi i
+artiklen retter til så der står noget at det "performance" af serveren
+selvfølgelig skal skalere med antallet af systemer der er forbundet
+til den og at det vigtige er at sørge for at der er lave svartider på
+ens quiries.
+
+Hvad angår plads kunne jeg godt lige bruge lidt input fra jer omkring
+størrelse. Så vidt jeg husker er lagerplads da noget som vi er nødt
+til at tænke ind i det, ikke sandt? Vil foreslå at vi imødekommer ham
+og skriver en kort sætning om hvordan vi sørger for mulighed for
+udvidelse. Egentlig er det jo en af vores pointer med at bruge en
+standardopsærning netop at vi IKKE behøver at tænke over hvordan man
+gør det, men jeg tror ikke det er værd at tage diskussionen for at
+undgå at tilføje en sætning. Det eneste problem er at jeg ikke kan
+huske hvordan vi rent faktisk har gjort det, RAID eller LVM osv. Her
+får jeg brug for lidt input.
+
+ * When you say standard server software do you just mean a MySQL
+   server?
+
+Vi tilbyder at præcisere at vi mener en standard LAMP server
+installation.
+
+ * Giving access to all the tables in a database is a _really_ bad
+   idea - what about security; one client can affect the data for
+   every other client.
+
+Ahh ja, vi har nævnt at vi har specifikke adgangsbetingelser for alle
+de forskellige tabeller, men ikke hvad vi bruger det til. Vi tilbyder
+at tilføje en sætning som forklarer at alle tabeller kan læses, men at
+skriverettigheder er begrænset til en enkelt bruger per opstilling.
+
+ * ODBC is a bit dated; why not use a direct access and encrypt the
+   username/password on the system.  Also having a different
+   username/password will require the DBA to give new passwords to
+   every user.
+
+Jeg er ikke helt med på hvad det er han mener omkring odbc og direct
+access. Mit bud ville være at sige at vi bruger odbc fordi det er en
+veletableret teknologi som er tilrådighed som standard (både i windows
+og programmeringssprog) og ikke at rette noget i artiklen.
+
+Til den sidste vil jeg afklare at vi ikke har brugernavn/adgangskode
+per bruger, men per opstilling og at det er det vi mener er nødvendigt
+for at implementere den sikkerhed han spørger til ovenfor.
+
+ * If every client needs to make a table that means that each client
+   needs to make a table.  If I have 300 clients they each need their
+   own table?  Why not have a client table to identify the data?
+
+I realiteten er det vel gjort sådan simpelthen fordi vi viste at
+antallet af systemer ikke ville stige over et antal hvor 4 tabeller
+per opstilling ikke er en urimelig byrde. Men hvis skal være lidt
+smartere kan vi jo slå på noget omkring datamængder (hvis det da vel
+og mærke er tilfældet), altså at vi både i de kontinuerte tabeller og
+i xy tabellerne lagrer data i mængder som betyder at det ikke er
+praktisk at kombinere dem. Hvad siger data om det?
+
+ * You are using a weirdly formatted database; the metdata should be
+   normalised out - why didn't you do this.  There are valid reasons;
+   look for NoSQL stuff but at the moment it just looks like a weird
+   design.
+
+Det må være en misforståelse. Når taler om at normalisere metadataen
+ud, må det da være præis det vi gør. Enige?
+
+Det mener jeg egentlig at vi har forklaret tydeligt i artiklen. Idet
+vi imødekommer ham på mange andre punkter, kan det måske her gå an at
+sige at det mener vi at vi har forklaret og henvise til
+stedet. Alternativt, kan vi også bare lave en symbolsk ændring og sige
+"ok, det er faktisk det vi har gjort, men vi havde måske ikke
+forklaret det tydeligt nok bla bla bla, det er nu rettet."
+
+ * On the data extarction - you're just describing SQL cut this
+   section right down
+
+Dette er en specifik udlægning af en klage i det store afsnit hvor han
+skriver "On the data presentation - concentrate on the plotting
+library tie in with the back end rather than saying the user can get
+data out with SQL and SELECT clauses - if the users knows SQL they'll
+say 'it's just SQL' and if they don't they won't understand it." Jeg
+vil foreslå at vi forklarer at det er vores forsøg på at komme folk
+som ikke kender SQL i møde, idet det ofte forekommer sådanne personer
+svært eller magisk, men at det måske ikke passer ind i sådan en
+publikation. Vi fjerner det, men beholder tilgengæld SQL'en i
+eksemplet med morgentryk.
+
+Derudover vil jeg også foreslå at vi nævner muligheden for at
+eksportere i "data extraction"-afsnittet. Det er vist lidt en fejl at
+vi ikke har nævnt denne mulighed her, idet mange jo foretrækker at
+lave databehandle eller lave i figurer i separate programmer.
+
  * You list possible DBMSs; include MS SQL - even if you don't liek it it is a very popular system!
- * The visualisation system is very interesting - write mreo about this and show examples of swapping out the plotters.  Maybe talk about having setups which don't require files to be written on the server directly?
+
+Enig. Det tilføjer vi, selvom det smager grimt.
+
+ * The visualisation system is very interesting - write mreo about
+   this and show examples of swapping out the plotters.  Maybe talk
+   about having setups which don't require files to be written on the
+   server directly?
+
+Altså, det ville vi jo i virkeligheden gerne tale mere om, men vi har
+bare begrænset os, for ikke at lade vores begejstring løbe af med
+os. Vi talte vist om hvor meget vi skulle vise af websiden og blev
+også her enige om at begrænse os, men nu hvor han dirkete beder om
+det, synes jeg vi skal tilføje at skærmbillede af den samme graf men i
+dygraphs (men måske zoomet på en andel, eller hvad der nu ser godt
+ud). Jeg vil foreslå at vi gøre det som en modifikation af den
+eksisterende figur 2, og at vi gør det ved at stable de to
+figurer lodret. Det vil give en meget høj figur, men man får vist
+sjældent figurer som breder sig over flere spalter, så derfor er det
+nok bedst at sørge for at få en hel spaltebredde per
+skærmebillede. Denne nye figur vil en af jer være nødt til at lave,
+idet jeg ikke p.t. har adgang til cinfdata, men det skulle også være
+en mindre opgave. Jeg vilforeslå at gøre det med de samme to spektre.
+
+Derudover foreslår jeg at tilføje lidt mere snak om hvilke muligheder
+vi har på siden. At vælge vilkårlige grafer at plotte sammen, nævne
+eksempler på de simple modifikationer og tale lidt om
+standardindstillinger i XML.
+
  * Are you just using the plotting library and raw HTML/CSS on the browser client side - if you are using DOJO or jQuery add it in and reference it.
+
+Ja, vi bruger jQuery men ikke DOJO right (og derudover kun dygraphs
+som allerede er citeret). Tilføje reference til jQuery.
